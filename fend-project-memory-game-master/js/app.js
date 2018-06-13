@@ -18,7 +18,12 @@ const   cards = [ "fa-diamond", "fa-diamond",
  */
         domCardLi = document.getElementsByClassName("card");
 
-        console.log(domCardLi.length);
+    // Randomizes cards on the DOM
+let shuffledCards = shuffle(cards);
+
+    for(let i = 0; i < domCardLi.length; i += 1){
+        domCardLi[i].innerHTML = `<i class="fa ${shuffledCards[i]}"></i>`;
+    }
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
