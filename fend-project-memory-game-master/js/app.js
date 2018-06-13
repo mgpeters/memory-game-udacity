@@ -10,16 +10,11 @@ const   cards = [ "fa-diamond", "fa-diamond",
                 "fa-bicycle", "fa-bicycle",
                 "fa-bomb", "fa-bomb"],
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
         domCardLi = document.getElementsByClassName("card");
 
-    // Randomizes cards on the DOM
 let shuffledCards = shuffle(cards);
+
+// Randomizes cards on the DOM
 
     for(let i = 0; i < domCardLi.length; i += 1){
         domCardLi[i].innerHTML = `<i class="fa ${shuffledCards[i]}"></i>`;
