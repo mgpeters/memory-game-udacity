@@ -10,7 +10,8 @@ const   cards = [ "fa-diamond", "fa-diamond",
                 "fa-bicycle", "fa-bicycle",
                 "fa-bomb", "fa-bomb"],
 
-        domCardLi = document.getElementsByClassName("card");
+        domCardLi = document.getElementsByClassName("card"),
+        clickCard = document.querySelector("li");
 
 let shuffledCards = shuffle(cards);
 
@@ -41,6 +42,7 @@ function shuffle(array) {
 function cardReveal(){
 
 }
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -52,6 +54,6 @@ function cardReveal(){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- domCardLi.addEventListener('click', function(){
-
+ clickCard.addEventListener('click', function(){
+    console.log("click test");
 });
