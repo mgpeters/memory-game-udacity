@@ -50,14 +50,14 @@ function cardReveal(evt){
 }
 
 function cardMatch(evt){
-    evt.target.classList.add("match");
-    evt.target.classList.remove("open");
-    evt.target.classList.remove("show");
+    evt.classList.add("match");
+    evt.classList.remove("open");
+    evt.classList.remove("show");
 }
 
 function cardReverse(evt){
-    evt.target.classList.remove("open");
-    evt.target.classList.remove("show");
+    evt.classList.remove("open");
+    evt.classList.remove("show");
 }
 
 /*
@@ -71,20 +71,22 @@ function cardReverse(evt){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-deckList.addEventListener("click", function(event){
+deckList.addEventListener("click", function(event){ //this is all fucked start here//
     cardReveal(event);
 
     if (cardQueue.length > 1){
         if(cardQueue[0] == cardQueue[1]){
             let matched = document.getElementsByClassName("open");
-            console.log(`These are the matches: ${matched}`);
+            console.log(matched);
             cardMatch(matched);
             cardQueue = [];
+
         }
         else{
             let matched = document.getElementsByClassName("open");
-            console.log(`These are not the matches: ${matched}`);
-            cardReverse(matched);
+            console.log(matched[1]);
+            cardReverse(matched[0]);
+            cardReverse(matched[1]);
             cardQueue = [];
         }
 
