@@ -41,20 +41,20 @@ function shuffle(array) {
     return array;
 };
 
-function cardReveal(){
+function cardReveal(evt){
+    evt.target.classList.add("open");
+}
+
+function cardOpen(evt){
 
 }
 
-function cardOpen(){
+function cardShow(evt){
 
 }
 
-function cardShow(){
+function cardMatch(evt){
 
-}
-
-function cardMatch(){
-    
 }
 
 /*
@@ -68,7 +68,8 @@ function cardMatch(){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-deckList.addEventListener("click", function(){
+deckList.addEventListener("click", function(event){
+    cardReveal(event);
     console.log("Works");
 });
 
