@@ -11,7 +11,9 @@ const   cards = [ "fa-diamond", "fa-diamond",
                 "fa-bomb", "fa-bomb"],
 
         domCardLi = document.getElementsByClassName("card"),
-        clickCard = document.querySelector("li");
+        deckList = document.querySelector(".deck");
+
+        console.log(deckList);
 
 let shuffledCards = shuffle(cards);
 
@@ -54,6 +56,6 @@ function cardReveal(){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
- clickCard.addEventListener('click', function(){
-    console.log("click test");
+deckList.addEventListener("click", function(){
+    console.log("Works");
 });
