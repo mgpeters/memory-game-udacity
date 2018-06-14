@@ -13,7 +13,8 @@ const   cards = [ "fa-diamond", "fa-diamond",
         domCardLi = document.getElementsByClassName("card"),
         deckList = document.querySelector(".deck");
 
-let cardQueue = [];
+let cardQueue = [],
+    cardOriginQueue = [];
         
 
 // Randomizes cards on the DOM
@@ -47,6 +48,9 @@ function cardReveal(evt){
     evt.target.classList.add("open");
     evt.target.classList.add("show");
     cardQueue.push(evt.target.childNodes);
+    cardOriginQueue.push(evt.target);
+    console.log(cardQueue);
+    console.log(cardOriginQueue);
 }
 
 function cardMatch(evt){
@@ -74,20 +78,20 @@ function cardReverse(evt){
 deckList.addEventListener("click", function(event){ //this is all fucked start here//
     cardReveal(event);
 
-    if (cardQueue.length > 1){
-        if(cardQueue[0] == cardQueue[1]){
-            let matched = document.getElementsByClassName("open");
-            console.log(matched);
-            cardMatch(matched);
+   if (cardQueue.length > 1){
+        if(cardQueue[0] == cardQueue[1]){     
+            for(let i = 0; i < cardOriginQueue.length; i += 1){
+                cardMatch(cardOriginQueue[i]);
+            }
             cardQueue = [];
-
+            cardOriginQueue = [];
         }
         else{
-            let matched = document.getElementsByClassName("open");
-            console.log(matched[1]);
-            cardReverse(matched[0]);
-            cardReverse(matched[1]);
+            for(let i = 0; i < cardOriginQueue.length; i += 1){
+                cardReverse(cardOriginQueue[i]);
+            }
             cardQueue = [];
+            cardOriginQueue = [];
         }
 
     } 
