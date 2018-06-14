@@ -11,17 +11,18 @@ const   cards = [ "fa-diamond", "fa-diamond",
                 "fa-bomb", "fa-bomb"],
 
         domCardLi = document.getElementsByClassName("card"),
-        deckList = document.querySelector(".deck");
-
-        console.log(deckList);
-
-let shuffledCards = shuffle(cards);
+        deckList = document.querySelector(".deck"); 
+        
 
 // Randomizes cards on the DOM
+
+function shuffleCards(){
+    let shuffledCards = shuffle(cards);
 
     for(let i = 0; i < domCardLi.length; i += 1){
         domCardLi[i].innerHTML = `<i class="fa ${shuffledCards[i]}"></i>`;
     }
+}
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -59,3 +60,5 @@ function cardReveal(){
 deckList.addEventListener("click", function(){
     console.log("Works");
 });
+
+shuffleCards();
