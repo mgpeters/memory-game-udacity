@@ -75,13 +75,17 @@ deckList.addEventListener("click", function(event){
     cardReveal(event);
 
     if (cardQueue.length > 1){
-        console.log("more than one");
-
         if(cardQueue[0] == cardQueue[1]){
-            console.log("match!");
+            let matched = document.getElementsByClassName("open");
+            console.log(`These are the matches: ${matched}`);
+            cardMatch(matched);
+            cardQueue = [];
         }
         else{
-            console.log("not a match");
+            let matched = document.getElementsByClassName("open");
+            console.log(`These are not the matches: ${matched}`);
+            cardReverse(matched);
+            cardQueue = [];
         }
 
     } 
