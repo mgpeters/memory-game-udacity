@@ -11,7 +11,9 @@ const   cards = [ "fa-diamond", "fa-diamond",
                 "fa-bomb", "fa-bomb"],
 
         domCardLi = document.getElementsByClassName("card"),
-        deckList = document.querySelector(".deck"); 
+        deckList = document.querySelector(".deck");
+
+let cardQueue = [];
         
 
 // Randomizes cards on the DOM
@@ -44,10 +46,18 @@ function shuffle(array) {
 function cardReveal(evt){
     evt.target.classList.add("open");
     evt.target.classList.add("show");
+    cardQueue.push(evt.target.childNodes);
 }
 
 function cardMatch(evt){
     evt.target.classList.add("match");
+    evt.target.classList.remove("open");
+    evt.target.classList.remove("show");
+}
+
+function cardReverse(evt){
+    evt.target.classList.remove("open");
+    evt.target.classList.remove("show");
 }
 
 /*
@@ -63,7 +73,19 @@ function cardMatch(evt){
 
 deckList.addEventListener("click", function(event){
     cardReveal(event);
-    console.log("Works");
+
+    if (cardQueue.length > 1){
+        console.log("more than one");
+
+        if(cardQueue[0] == cardQueue[1]){
+            console.log("match!");
+        }
+        else{
+            console.log("not a match");
+        }
+
+    } 
+    console.log(cardQueue);
 });
 
 shuffleCards();
