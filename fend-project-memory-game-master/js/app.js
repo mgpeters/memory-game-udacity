@@ -43,18 +43,11 @@ function shuffle(array) {
 
 function cardReveal(evt){
     evt.target.classList.add("open");
-}
-
-function cardOpen(evt){
-
-}
-
-function cardShow(evt){
-
+    evt.target.classList.add("show");
 }
 
 function cardMatch(evt){
-
+    evt.target.classList.add("match");
 }
 
 /*
