@@ -14,7 +14,8 @@ const   cards = [ "fa-diamond", "fa-diamond",
         deckList = document.querySelector(".deck");
 
 let cardQueue = [],
-    cardOriginQueue = [];
+    cardOriginQueue = [],
+    winningNumber = 0;
         
 
 // Randomizes cards on the DOM
@@ -90,17 +91,18 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
    else if(cardQueue.length > 1){
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");  
-            setTimeout(function(){
+            setTimeout(function matchedTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
+                winningNumber += 1;
             }, 1500);
         }
         else{
             console.log("no match");
-            setTimeout(function(){
+            setTimeout(function reverseTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardReverse(cardOriginQueue[i]);
                 }
@@ -108,7 +110,10 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardOriginQueue = [];
             }, 1500);
         }
-    } 
+    }
+    if (winningNumber == 8){
+        
+    }
 });
 
 shuffleCards();
