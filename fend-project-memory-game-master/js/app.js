@@ -79,19 +79,25 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
     cardReveal(event);
 
    if (cardQueue.length > 1){
-        if(cardQueue[0] == cardQueue[1]){     
-            for(let i = 0; i < cardOriginQueue.length; i += 1){
+        if(cardQueue[0] == cardQueue[1]){   
+            console.log("Matched");  
+            setTimeout(function(){
+                for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
-            }
-            cardQueue = [];
-            cardOriginQueue = [];
+                }
+                cardQueue = [];
+                cardOriginQueue = [];
+            }, 2000);
         }
         else{
-            for(let i = 0; i < cardOriginQueue.length; i += 1){
+            console.log("no match");
+            setTimeout(function(){
+                for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardReverse(cardOriginQueue[i]);
-            }
-            cardQueue = [];
-            cardOriginQueue = [];
+                }
+                cardQueue = [];
+                cardOriginQueue = [];
+            }, 2000);
         }
 
     } 
