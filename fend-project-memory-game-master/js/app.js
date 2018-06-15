@@ -42,15 +42,15 @@ function shuffle(array) {
     }
 
     return array;
-};
+}
 
 function cardReveal(evt){
-    evt.target.classList.add("open");
-    evt.target.classList.add("show");
-    cardQueue.push(evt.target.children);
-    cardOriginQueue.push(evt.target);
-    console.log(cardQueue);
-    console.log(cardOriginQueue);
+        evt.target.classList.add("open");
+        evt.target.classList.add("show");
+        cardQueue.push(evt.target.children);
+        cardOriginQueue.push(evt.target);
+        console.log(cardQueue);
+        console.log(cardOriginQueue);
 }
 
 function cardMatch(evt){
@@ -76,9 +76,18 @@ function cardReverse(evt){
  */
 
 deckList.addEventListener("click", function(event){ //this is all fucked start here//
-    cardReveal(event);
+    if(event.target.classList.contains("open")){
+        console.log("already open");
+        return;
+    } else{
+        cardReveal(event);
+    }
 
-   if (cardQueue.length > 1){
+   if (cardQueue.length > 2){
+        cardQueue = [];
+        cardOriginQueue = [];
+   }
+   else if(cardQueue.length > 1){
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");  
             setTimeout(function(){
@@ -87,7 +96,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
-            }, 2000);
+            }, 1500);
         }
         else{
             console.log("no match");
@@ -97,9 +106,8 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
-            }, 2000);
+            }, 1500);
         }
-
     } 
 });
 
