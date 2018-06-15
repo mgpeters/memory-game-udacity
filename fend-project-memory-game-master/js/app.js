@@ -47,7 +47,7 @@ function shuffle(array) {
 function cardReveal(evt){
     evt.target.classList.add("open");
     evt.target.classList.add("show");
-    cardQueue.push(evt.target.childNodes);
+    cardQueue.push(evt.target.children);
     cardOriginQueue.push(evt.target);
     console.log(cardQueue);
     console.log(cardOriginQueue);
@@ -79,7 +79,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
     cardReveal(event);
 
    if (cardQueue.length > 1){
-        if(cardQueue[0] == cardQueue[1]){   
+        if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");  
             setTimeout(function(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
@@ -101,7 +101,6 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
         }
 
     } 
-    console.log(cardQueue);
 });
 
 shuffleCards();
