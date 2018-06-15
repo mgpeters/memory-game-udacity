@@ -1,7 +1,7 @@
 /*
  * An array that holds all the cards
  */
-const   cards = [ "fa-diamond", "fa-diamond",
+const   cards = ["fa-diamond", "fa-diamond",
                 "fa-paper-plane-o", "fa-paper-plane-o",
                 "fa-anchor", "fa-anchor",
                 "fa-bolt", "fa-bolt",
