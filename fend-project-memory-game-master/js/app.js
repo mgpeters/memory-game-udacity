@@ -112,7 +112,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
         }
     }
     if (winningNumber == 8){
-        
+        document.getElementsByClassName(".winners-screen").style.visibility='visible';
     }
 });
 
