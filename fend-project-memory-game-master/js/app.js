@@ -98,6 +98,10 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardQueue = [];
                 cardOriginQueue = [];
                 winningNumber += 1;
+                if (winningNumber == 8){
+                    console.log("YOU WON");
+                    const winner = document.querySelector(".winners-screen").style.visibility='visible';
+                }
             }, 1500);
         }
         else{
@@ -110,9 +114,6 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardOriginQueue = [];
             }, 1500);
         }
-    }
-    if (winningNumber == 8){
-        document.getElementsByClassName(".winners-screen").style.visibility='visible';
     }
 });
 
