@@ -113,7 +113,7 @@ h1 {
     height: 1000px;
     background-color: #02ccba;
     /*z-index: 1;
-   visibility: hidden; */
+    visibility: hidden;*/
 }
 .winners-screen__text{
     text-align: center;
@@ -122,4 +122,14 @@ h1 {
     transform: translateY(-50%); 
     color: black;
     font-size: 45px;
+}
+#play-again-button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
