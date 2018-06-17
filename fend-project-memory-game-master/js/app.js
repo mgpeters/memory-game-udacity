@@ -12,6 +12,7 @@ const   cards = ["fa-diamond", "fa-diamond",
 
         domCardLi = document.getElementsByClassName("card"),
         deckList = document.querySelector(".deck");
+        restartButton = document.getElementById("play-again-button");
 
 let cardQueue = [],
     cardOriginQueue = [],
@@ -63,6 +64,13 @@ function cardMatch(evt){
 function cardReverse(evt){
     evt.classList.remove("open");
     evt.classList.remove("show");
+}
+function gameRestart(){
+    for(i = 0; i < domCardLi.length; i += 1){
+        domCardLi[i].classList.remove("match");
+    }
+    shuffleCards();
+    const winner = document.querySelector(".winners-screen").style.visibility='hidden';
 }
 
 /*
@@ -116,5 +124,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
         }
     }
 });
+
+restartButton.addEventListener('click', gameRestart);
 
 shuffleCards();
