@@ -88,15 +88,15 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
     if(event.target.classList.contains("open")){
         console.log("already open");
         return;
+    } else if(cardQueue.length > 2){
+        cardQueue = [];
+        cardOriginQueue = [];
+        return;
     } else{
         cardReveal(event);
     }
 
-   if (cardQueue.length > 2){
-        cardQueue = [];
-        cardOriginQueue = [];
-   }
-   else if(cardQueue.length > 1){
+    if(cardQueue.length > 1){
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");  
             setTimeout(function matchedTimeout(){
@@ -110,7 +110,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                     console.log("YOU WON");
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
                 }
-            }, 1500);
+            }, 1000);
         }
         else{
             console.log("no match");
@@ -120,7 +120,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
-            }, 1500);
+            }, 1000);
         }
     }
 });
