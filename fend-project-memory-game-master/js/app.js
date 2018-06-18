@@ -14,6 +14,7 @@ const   cards = ["fa-diamond", "fa-diamond",
         deckList = document.querySelector(".deck"),
         restartButton = document.getElementById("restartButton"),
         restart = document.querySelector(".restart"),
+        moveSelector = document.querySelector(".moves"),
         starCounter = document.querySelector(".stars");
 
 let cardQueue = [],
@@ -79,6 +80,12 @@ function gameRestart(){
     shuffleCards();
     const winner = document.querySelector(".winners-screen").style.visibility='hidden';
 }
+function movesIncrease(){
+    moves += 1;
+
+    console.log("Moves: " + moves);
+    moveSelector.textContent = moves;
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -113,12 +120,12 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardQueue = [];
                 cardOriginQueue = [];
                 winningNumber += 1;
-                moves += 1;
                 if (winningNumber == 8){
                     console.log("YOU WON");
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
                 }
             }, 1000);
+            movesIncrease();
         }
         else{
             console.log("no match");
@@ -128,8 +135,8 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
-                moves += 1;
             }, 1000);
+            movesIncrease();
         }
     }
 });
