@@ -7,7 +7,7 @@
 
 ## Instructions
 
-This is my memory game project for the Udacity FEND, which uses vanilla Javascript, CSS, and (of course) HTML to create a classic memory cards game.
+This is my memory game project for the Udacity FEND, which uses vanilla Javascript, CSS, and (of course) HTML to create a classic memory game.
 
 Please clone and Open - "index.html" in your favorite browser.
 
@@ -15,7 +15,7 @@ Once a card is clicked, it will reveal the symbol hidden beneath. Once a symbol 
 
 Enjoy!
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+For specific, detailed instructions on the criteria of this project, look at the project specifications in the [Udacity Classroom](https://review.udacity.com/#!/rubrics/591/view).
 
 ## Contributing
 
