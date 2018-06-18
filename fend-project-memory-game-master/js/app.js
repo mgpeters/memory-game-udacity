@@ -57,8 +57,6 @@ function cardReveal(evt){
         evt.target.classList.add("show");
         cardQueue.push(evt.target.children);
         cardOriginQueue.push(evt.target);
-        console.log(cardQueue);
-        console.log(cardOriginQueue);
 }
 
 function cardMatch(evt){
@@ -98,8 +96,9 @@ function movesIncrease(){
 }
 
 function starRemove(){
+    let starCounter = document.getElementById("stars");
     console.log("Star Remove Fired");
-    const starCounter = document.getElementById("stars");
+    console.log(starCounter);
     starCounter.removeChild(starCounter.childNodes[0]);
 }
 
@@ -132,7 +131,8 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
 
     if(cardQueue.length > 1){
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
-            console.log("Matched");  
+            console.log("Matched");
+            movesIncrease();  
             setTimeout(function matchedTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
@@ -145,11 +145,10 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
                 }
             }, 1000);
-            movesIncrease();
-            starRemove();
-              }
+        }
         else{
             console.log("no match");
+            movesIncrease();
             setTimeout(function reverseTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardReverse(cardOriginQueue[i]);
@@ -157,9 +156,14 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardQueue = [];
                 cardOriginQueue = [];
             }, 1000);
-            movesIncrease();
-            starRemove();
         }
+    }
+    if(moves == 20){
+        starRemove();
+    } else if(moves == 15){
+        starRemove();
+    } else if(moves == 5){
+        starRemove();
     }
 });
 
