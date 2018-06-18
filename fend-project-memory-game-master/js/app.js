@@ -14,8 +14,10 @@ const   cards = ["fa-diamond", "fa-diamond",
         deckList = document.querySelector(".deck"),
         restartButton = document.getElementById("restartButton"),
         restart = document.querySelector(".restart"),
-        moveSelector = document.querySelectorAll(".moves"),
-        starCounter = document.getElementById("stars");
+        moveSelector = document.querySelectorAll(".moves");
+        //starCounter = document.getElementById("stars");
+
+        //console.log(starCounter);
 
 let cardQueue = [],
     cardOriginQueue = [],
@@ -96,7 +98,9 @@ function movesIncrease(){
 }
 
 function starRemove(){
-  //  starCounter.childNodes[0].remove;
+    console.log("Star Remove Fired");
+    const starCounter = document.getElementById("stars");
+    starCounter.removeChild(starCounter.childNodes[0]);
 }
 
 function starReplenish(){
@@ -142,7 +146,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
             }, 1000);
             movesIncrease();
-            removeChild();
+            starRemove();
               }
         else{
             console.log("no match");
@@ -154,6 +158,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardOriginQueue = [];
             }, 1000);
             movesIncrease();
+            starRemove();
         }
     }
 });
