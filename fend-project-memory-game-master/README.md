@@ -19,8 +19,6 @@ For specific, detailed instructions on the criteria of this project, look at the
 
 ## Contributing
 
-This project bas based off the starter code provided by Udacity. Their contributing text is listed below:
+This project bas based off the starter code provided by Udacity. The repository for the starter code can be found [here](https://github.com/udacity/fend-project-memory-game).
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+For details on contributing to my code, check out [CONTRIBUTING.md](CONTRIBUTING.md).
