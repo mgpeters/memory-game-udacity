@@ -11,12 +11,15 @@ const   cards = ["fa-diamond", "fa-diamond",
                 "fa-bomb", "fa-bomb"],
 
         domCardLi = document.getElementsByClassName("card"),
-        deckList = document.querySelector(".deck");
-        restartButton = document.getElementById("play-again-button");
+        deckList = document.querySelector(".deck"),
+        restartButton = document.getElementById("restartButton"),
+        restart = document.querySelector(".restart"),
+        starCounter = document.querySelector(".stars");
 
 let cardQueue = [],
     cardOriginQueue = [],
-    winningNumber = 0;
+    winningNumber = 0,
+    moves = 0;
         
 
 // Randomizes cards on the DOM
@@ -66,9 +69,13 @@ function cardReverse(evt){
     evt.classList.remove("show");
 }
 function gameRestart(){
+    console.log("Restart Clicked");
     for(i = 0; i < domCardLi.length; i += 1){
         domCardLi[i].classList.remove("match");
+        domCardLi[i].classList.remove("show");
+        domCardLi[i].classList.remove("open");
     }
+    moves = 0;
     shuffleCards();
     const winner = document.querySelector(".winners-screen").style.visibility='hidden';
 }
@@ -106,6 +113,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardQueue = [];
                 cardOriginQueue = [];
                 winningNumber += 1;
+                moves += 1;
                 if (winningNumber == 8){
                     console.log("YOU WON");
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
@@ -120,11 +128,14 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
+                moves += 1;
             }, 1000);
         }
     }
 });
 
+    
 restartButton.addEventListener('click', gameRestart);
+restart.addEventListener('click', gameRestart);
 
 shuffleCards();

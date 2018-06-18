@@ -123,7 +123,7 @@ h1 {
     color: black;
     font-size: 45px;
 }
-#play-again-button{
+button {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
