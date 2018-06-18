@@ -15,7 +15,7 @@ const   cards = ["fa-diamond", "fa-diamond",
         restartButton = document.getElementById("restartButton"),
         restart = document.querySelector(".restart"),
         moveSelector = document.querySelectorAll(".moves"),
-        starCounter = document.querySelector(".stars");
+        starCounter = document.getElementById("stars");
 
 let cardQueue = [],
     cardOriginQueue = [],
@@ -69,6 +69,7 @@ function cardReverse(evt){
     evt.classList.remove("open");
     evt.classList.remove("show");
 }
+
 function gameRestart(){
     console.log("Restart Clicked");
     for(i = 0; i < domCardLi.length; i += 1){
@@ -83,6 +84,7 @@ function gameRestart(){
     shuffleCards();
     const winner = document.querySelector(".winners-screen").style.visibility='hidden';
 }
+
 function movesIncrease(){
     moves += 1;
 
@@ -91,6 +93,14 @@ function movesIncrease(){
     for(i = 0; i < moveSelector.length; i += 1){
         moveSelector[i].textContent = moves;
     }
+}
+
+function starRemove(){
+  //  starCounter.childNodes[0].remove;
+}
+
+function starReplenish(){
+
 }
 
 /*
@@ -132,7 +142,8 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
             }, 1000);
             movesIncrease();
-        }
+            removeChild();
+              }
         else{
             console.log("no match");
             setTimeout(function reverseTimeout(){
