@@ -80,7 +80,9 @@ function gameRestart(){
         domCardLi[i].classList.remove("show");
         domCardLi[i].classList.remove("open");
     }
+    
     moves = 0;
+
     for(i = 0; i < moveSelector.length; i += 1){
         moveSelector[i].textContent = moves;
     }
@@ -100,8 +102,6 @@ function movesIncrease(){
 }
 
 function starHide(){
-   // let starCounter = document.querySelectorAll(".stars li");
-
     for (star of starCounter){
         if(star.style.display !== 'none'){
             star.style.display = "none";
@@ -156,7 +156,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                     console.log("YOU WON");
                     const   winningStarsDisplay = document.getElementById("winning-stars"),
                             winner = document.querySelector(".winners-screen").style.visibility='visible';
-                            
+
                             winningStarsDisplay.innerHTML = starRating;
                 }
 

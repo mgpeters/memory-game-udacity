@@ -107,13 +107,17 @@ h1 {
     float: right;
     cursor: pointer;
 }
+.timer{
+    display: inline-block;
+    padding-left: 50px;
+}
 .winners-screen{
     position: absolute;
     width: 100%;
     height: 1000px;
     background-color: #02ccba;
-    /*z-index: 1;
-    visibility: hidden;*/
+    z-index: 1;
+    visibility: hidden;
 }
 .winners-screen__text{
     text-align: center;
