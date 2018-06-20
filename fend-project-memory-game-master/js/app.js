@@ -141,7 +141,6 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");
             movesIncrease();  
-           // setTimeout(function matchedTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
                 }
@@ -153,15 +152,13 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
                 }
 
-                if(moves === 4 || moves === 24){
+                if(moves === 10 || moves === 20){
                     starHide();
                 }
-           // }, 1000);
         }
         else{
             console.log("no match");
             movesIncrease();
-           // setTimeout(function reverseTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardReverse(cardOriginQueue[i]);
                 }
@@ -169,10 +166,9 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardOriginQueue = [];
 
 
-                if(moves === 4 || moves === 24){
+                if(moves === 10 || moves === 20){
                     starHide();
                 }
-         //   }, 1000);
         }
     }
 });
