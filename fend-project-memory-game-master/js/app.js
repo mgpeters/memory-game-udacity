@@ -14,15 +14,14 @@ const   cards = ["fa-diamond", "fa-diamond",
         deckList = document.querySelector(".deck"),
         restartButton = document.getElementById("restartButton"),
         restart = document.querySelector(".restart"),
-        moveSelector = document.querySelectorAll(".moves");
-        //starCounter = document.getElementById("stars");
-
-        //console.log(starCounter);
+        moveSelector = document.querySelectorAll(".moves"),
+        starCounter = document.querySelectorAll(".stars li");
 
 let cardQueue = [],
     cardOriginQueue = [],
     winningNumber = 0,
-    moves = 0;
+    moves = 0,
+    starRating = 3;
         
 
 // Randomizes cards on the DOM
@@ -101,11 +100,12 @@ function movesIncrease(){
 }
 
 function starHide(){
-    let starCounter = document.querySelectorAll(".stars li");
+   // let starCounter = document.querySelectorAll(".stars li");
 
     for (star of starCounter){
         if(star.style.display !== 'none'){
             star.style.display = "none";
+            starRating -= 1;
             break;
         }
     }
@@ -117,6 +117,7 @@ function starReplenish(){
     for (star of starCounter){
         star.style.display = "";      
     }
+    starRating = 3;
 }
 
 /*
@@ -144,7 +145,6 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
 
     if(cardQueue.length > 1){
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
-            console.log("Matched");
             movesIncrease();  
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
@@ -152,9 +152,12 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardQueue = [];
                 cardOriginQueue = [];
                 winningNumber += 1;
-                if (winningNumber == 8){
+                if (winningNumber == 1){
                     console.log("YOU WON");
-                    const winner = document.querySelector(".winners-screen").style.visibility='visible';
+                    const   winningStarsDisplay = document.getElementById("winning-stars"),
+                            winner = document.querySelector(".winners-screen").style.visibility='visible';
+                            
+                            winningStarsDisplay.innerHTML = starRating;
                 }
 
                 if(moves === 10 || moves === 20){
@@ -162,18 +165,17 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 }
         }
         else{
-            console.log("no match");
             movesIncrease();
-                for(let i = 0; i < cardOriginQueue.length; i += 1){
-                cardReverse(cardOriginQueue[i]);
-                }
-                cardQueue = [];
-                cardOriginQueue = [];
 
+            for(let i = 0; i < cardOriginQueue.length; i += 1){
+            cardReverse(cardOriginQueue[i]);
+            }                
+            cardQueue = [];
+            cardOriginQueue = [];
 
-                if(moves === 2 || moves === 20){
-                    starHide();
-                }
+            if(moves === 10 || moves === 20){
+                starHide();
+            }
         }
     }
 });
