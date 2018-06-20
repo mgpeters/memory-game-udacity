@@ -85,6 +85,7 @@ function gameRestart(){
     for(i = 0; i < moveSelector.length; i += 1){
         moveSelector[i].textContent = moves;
     }
+    starReplenish();
     shuffleCards();
     const winner = document.querySelector(".winners-screen").style.visibility='hidden';
 }
@@ -111,7 +112,11 @@ function starHide(){
 }
 
 function starReplenish(){
-
+    let starCounter = document.querySelectorAll(".stars li");
+    console.log("star replenish active");
+    for (star of starCounter){
+        star.style.display = "";      
+    }
 }
 
 /*
@@ -166,7 +171,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                 cardOriginQueue = [];
 
 
-                if(moves === 10 || moves === 20){
+                if(moves === 2 || moves === 20){
                     starHide();
                 }
         }
