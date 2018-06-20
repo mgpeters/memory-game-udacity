@@ -60,14 +60,18 @@ function cardReveal(evt){
 }
 
 function cardMatch(evt){
-    evt.classList.add("match");
-    evt.classList.remove("open");
-    evt.classList.remove("show");
+    setTimeout(function matchedTimeout(){
+        evt.classList.add("match");
+        evt.classList.remove("open");
+        evt.classList.remove("show");
+    }, 1000);    
 }
 
 function cardReverse(evt){
-    evt.classList.remove("open");
-    evt.classList.remove("show");
+    setTimeout(function reverseTimeout(){
+        evt.classList.remove("open");
+        evt.classList.remove("show");
+    }, 1000)
 }
 
 function gameRestart(){
@@ -95,11 +99,15 @@ function movesIncrease(){
     }
 }
 
-function starRemove(){
-    let starCounter = document.getElementById("stars");
-    console.log("Star Remove Fired");
-    console.log(starCounter);
-    starCounter.removeChild(starCounter.childNodes[0]);
+function starHide(){
+    let starCounter = document.querySelectorAll(".stars li");
+
+    for (star of starCounter){
+        if(star.style.display !== 'none'){
+            star.style.display = "none";
+            break;
+        }
+    }
 }
 
 function starReplenish(){
@@ -133,7 +141,7 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
         if(cardQueue[0][0].className == cardQueue[1][0].className){   
             console.log("Matched");
             movesIncrease();  
-            setTimeout(function matchedTimeout(){
+           // setTimeout(function matchedTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardMatch(cardOriginQueue[i]);
                 }
@@ -144,26 +152,28 @@ deckList.addEventListener("click", function(event){ //this is all fucked start h
                     console.log("YOU WON");
                     const winner = document.querySelector(".winners-screen").style.visibility='visible';
                 }
-            }, 1000);
+
+                if(moves === 4 || moves === 24){
+                    starHide();
+                }
+           // }, 1000);
         }
         else{
             console.log("no match");
             movesIncrease();
-            setTimeout(function reverseTimeout(){
+           // setTimeout(function reverseTimeout(){
                 for(let i = 0; i < cardOriginQueue.length; i += 1){
                 cardReverse(cardOriginQueue[i]);
                 }
                 cardQueue = [];
                 cardOriginQueue = [];
-            }, 1000);
+
+
+                if(moves === 4 || moves === 24){
+                    starHide();
+                }
+         //   }, 1000);
         }
-    }
-    if(moves == 20){
-        starRemove();
-    } else if(moves == 15){
-        starRemove();
-    } else if(moves == 5){
-        starRemove();
     }
 });
 
