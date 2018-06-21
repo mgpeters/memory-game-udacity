@@ -113,6 +113,7 @@ function movesIncrease(){
     }
 }
 
+// Hiding Stars Function - Based off example from: https://matthewcranford.com/memory-game-walkthrough-part-5-moves-stars/ 
 function starHide(){
     for (star of starCounter){
         if(star.style.display !== 'none'){
@@ -132,7 +133,7 @@ function starReplenish(){
     starRating = 3;
 }
 
-//Javascript Timer Functions//
+//Javascript Timer Functions from: https://jsfiddle.net/Daniel_Hug/pvk6p///
 
 function addTime() {
     seconds++;
