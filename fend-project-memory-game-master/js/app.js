@@ -191,7 +191,7 @@ deckList.addEventListener("click", function(event){
                 cardQueue = [];
                 cardOriginQueue = [];
                 winningNumber += 1;
-                if (winningNumber == 1){
+                if (winningNumber == 8){
                     clearTimeout(time);
 
                     const   winningStarsDisplay = document.getElementById("winning-stars"),

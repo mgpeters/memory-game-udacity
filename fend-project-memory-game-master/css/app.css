@@ -87,13 +87,13 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 500px;
     margin-bottom: 10px;
 }
 
 .score-panel .stars{
     margin: 0;
-    padding: 0;
+    padding-right: 50px;
     display: inline-block;
     margin: 0 5px 0 0;
 }
@@ -107,9 +107,9 @@ h1 {
     float: right;
     cursor: pointer;
 }
-.timer{
+.score-panel .timer{
     display: inline-block;
-    padding-left: 50px;
+    margin-left: 60px;
 }
 .winners-screen{
     position: absolute;
