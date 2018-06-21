@@ -89,6 +89,8 @@ function gameRestart(){
 
     moves = 0;
 
+    winningNumber = 0;
+
     for(i = 0; i < moveSelector.length; i += 1){
         moveSelector[i].textContent = moves;
     }
@@ -190,11 +192,16 @@ deckList.addEventListener("click", function(event){
                 cardOriginQueue = [];
                 winningNumber += 1;
                 if (winningNumber == 1){
-                    console.log("YOU WON");
+                    clearTimeout(time);
+
                     const   winningStarsDisplay = document.getElementById("winning-stars"),
                             winner = document.querySelector(".winners-screen").style.visibility='visible';
 
                             winningStarsDisplay.innerHTML = starRating;
+
+                            timerDisplay[0].textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
+                            (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" 
+                            + (seconds > 9 ? seconds : "0" + seconds);
                 }
 
                 if(moves === 10 || moves === 20){
