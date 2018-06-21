@@ -15,14 +15,20 @@ const   cards = ["fa-diamond", "fa-diamond",
         restartButton = document.getElementById("restartButton"),
         restart = document.querySelector(".restart"),
         moveSelector = document.querySelectorAll(".moves"),
-        starCounter = document.querySelectorAll(".stars li");
+        starCounter = document.querySelectorAll(".stars li"),
+        timerDisplay = document.querySelectorAll(".timer");
 
 let cardQueue = [],
     cardOriginQueue = [],
     winningNumber = 0,
     moves = 0,
-    starRating = 3;
-        
+    starRating = 3,
+    seconds = 0,
+    minutes = 0,
+    hours = 0,
+    time;
+    
+    console.log(time);
 
 // Randomizes cards on the DOM
 
@@ -80,12 +86,16 @@ function gameRestart(){
         domCardLi[i].classList.remove("show");
         domCardLi[i].classList.remove("open");
     }
-    
+
     moves = 0;
 
     for(i = 0; i < moveSelector.length; i += 1){
         moveSelector[i].textContent = moves;
     }
+    timerDisplay[1].textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+    clearTimeout(time);
+    time = undefined;
     starReplenish();
     shuffleCards();
     const winner = document.querySelector(".winners-screen").style.visibility='hidden';
@@ -120,6 +130,29 @@ function starReplenish(){
     starRating = 3;
 }
 
+//Javascript Timer Functions//
+
+function addTime() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    timerDisplay[1].textContent =   (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + 
+                                    (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" 
+                                    + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    time = setTimeout(addTime, 1000);
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -131,7 +164,11 @@ function starReplenish(){
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-deckList.addEventListener("click", function(event){ //this is all fucked start here//
+deckList.addEventListener("click", function(event){
+    if(typeof time === 'undefined'){
+        timer();
+    }
+
     if(event.target.classList.contains("open")){
         console.log("already open");
         return;
